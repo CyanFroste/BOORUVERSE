@@ -1,0 +1,25 @@
+.paginator {
+    nav {
+        display: flex;
+        flex-direction: column;
+        margin: $m 0;
+        & > *:not(:last-child) {
+            margin-bottom: $s;
+        }
+        button:not(.paginator__page-indicator) {
+            width: fit-content;
+        }
+    }
+
+    &__page-indicator {
+        color: $primary;
+        justify-content: center;
+    }
+
+    &__page-input {
+        display: flex;
+        input {
+            width: 80px;
+        }
+    }
+}

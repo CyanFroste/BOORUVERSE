@@ -1,0 +1,45 @@
+.posts {
+    &__sidebar-left,
+    &__sidebar-right {
+        position: fixed;
+        bottom: 0;
+        top: $l + $m;
+        z-index: 10;
+        background-color: $bg;
+    }
+    &__sidebar-left {
+        left: 0;
+        width: 300px;
+        padding: $m 0;
+        padding-left: $m;
+    }
+    &__sidebar-right {
+        right: 0;
+        width: 600px;
+    }
+    &__view-default {
+        padding: $m;
+        margin-left: 300px;
+        margin-right: 600px;
+    }
+    &__view__grid-default {
+        display: grid;
+        gap: $m;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+@include sm {
+    .posts {
+        .posts__view__grid-masonry {
+            display: flex;
+            padding: 0 1px;
+            .grid-masonry__column {
+                display: flex;
+                flex-direction: column;
+                width: 50%;
+                margin-bottom: $l + $s;
+            }
+        }
+    }
+}

@@ -1,0 +1,30 @@
+.bookmark-confirmation {
+    padding: $m;
+    min-width: 600px;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    span {
+        font-size: 1.4rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.075em;
+        margin: 0 $s;
+        color: $primary;
+    }
+
+    button {
+        align-self: flex-end;
+    }
+}
+
+@include sm {
+    .bookmark-confirmation {
+        padding: $s;
+        min-width: 200px;
+        width: 90vw;
+        min-height: 120px;
+    }
+}

@@ -1,0 +1,21 @@
+.chip {
+    background-color: $bg-elevated;
+    display: flex;
+    align-items: center;
+    padding: $xs $s;
+    border-radius: $brs;
+
+    &__action {
+        padding: $xs;
+        display: flex;
+        align-items: center;
+    }
+
+    &__body {
+        font-size: 1.2rem;
+        letter-spacing: 0.075em;
+        font-weight: 500;
+        padding: 0 $xs;
+        text-transform: uppercase;
+    }
+}

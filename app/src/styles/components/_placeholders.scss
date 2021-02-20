@@ -1,0 +1,44 @@
+.loading,
+.error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: $bg;
+
+    &.full {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        position: fixed;
+        z-index: 200;
+    }
+}
+
+.loading .spinner {
+    font-weight: 500;
+    letter-spacing: 0.075em;
+    span:nth-child(1) {
+        color: $primary;
+    }
+    span:nth-child(2) {
+        color: $text-alter;
+    }
+}
+.loading.full .spinner {
+    font-size: 2rem;
+}
+
+.error svg {
+    height: $l;
+    width: $l;
+    color: $primary;
+}
+.error.full .btn,
+.error .message {
+    margin-top: $m;
+    color: $text-alter;
+}

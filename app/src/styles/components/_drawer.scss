@@ -1,0 +1,20 @@
+#drawer {
+    .drawer {
+        &__backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 60;
+            background-color: rgba($bg, $alpha: 0.7);
+            display: flex;
+            justify-content: flex-end;
+        }
+        &__content {
+            height: 100%;
+            background-color: $bg;
+            border-left: $bl;
+        }
+    }
+}

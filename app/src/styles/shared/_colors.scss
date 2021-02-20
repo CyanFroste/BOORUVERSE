@@ -1,0 +1,15 @@
+$black: #141414;
+$gray: #212121;
+$light-gray: #424242;
+$yellow: #f5cb5c;
+$pink: #ff3e7b;
+$white: #ffffff;
+
+$bg: $black;
+$bg-elevated: $gray;
+$bg-alter: $white;
+$text: $white;
+$text-alter: $light-gray;
+$text: lighten($bg, 70%);
+$primary: $pink;
+$secondary: $yellow;

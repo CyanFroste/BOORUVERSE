@@ -1,0 +1,46 @@
+$switch-size: 16px;
+$toggle-animation-duration: 100ms;
+
+.switch {
+    display: flex;
+    align-items: center;
+
+    &__name {
+        margin-right: $s;
+        font-size: 1.2rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.075em;
+        color: $text-alter;
+        transition: color $toggle-animation-duration ease-in-out;
+    }
+    &.on &__name {
+        color: $primary;
+    }
+
+    input {
+        display: none;
+    }
+    &__container {
+        position: relative;
+        height: $switch-size;
+        width: 2 * $switch-size;
+        background-color: $bg-elevated;
+    }
+    &__slider {
+        height: $switch-size;
+        width: $switch-size;
+        position: absolute;
+        background-color: $text;
+        transition: transform $toggle-animation-duration ease-in-out;
+    }
+
+    &__container,
+    &__slider {
+        border-radius: $switch-size;
+    }
+
+    input[type='checkbox']:checked ~ &__container &__slider {
+        transform: translateX($switch-size);
+    }
+}

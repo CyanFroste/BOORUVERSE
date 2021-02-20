@@ -1,0 +1,20 @@
+input {
+    background-color: $bg;
+    border: none;
+    color: inherit;
+    font-family: inherit;
+    min-width: 80px;
+}
+input::placeholder {
+    color: lighten($text-alter, 25%)
+}
+
+.textfield {
+    padding: $xs $s;
+    width: 100%;
+}
+
+.textfield.outlined {
+    border: $bl;
+}
+

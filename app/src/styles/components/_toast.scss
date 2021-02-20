@@ -1,0 +1,51 @@
+.toast {
+    position: fixed;
+    right: $m;
+    bottom: $l;
+    z-index: 20;
+    background-color: $bg-alter;
+    color: $text-alter;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    border-radius: $brs;
+    border: $bl-alter;
+
+    svg {
+        color: $primary;
+    }
+
+    &__type,
+    &__header button {
+        padding: $s;
+        display: flex;
+        align-items: center;
+    }
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: $bl-alter;
+    }
+
+    &__type span {
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.075em;
+        margin-left: $xs;
+    }
+
+    &__body {
+        max-width: 360px;
+        padding: $s;
+        min-height: $l + $m;
+    }
+}
+
+@include sm {
+    .toast {
+        left: $m;
+        right: $m;
+        bottom: $l + $m;
+    }
+}

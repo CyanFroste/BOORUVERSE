@@ -1,0 +1,60 @@
+.navbar {
+    width: 100%;
+    position: sticky;
+    z-index: 40;
+    top: 0;
+    background-color: $bg;
+    border-bottom: $bl;
+    border-top: $bl;
+    nav {
+        height: ($l + $m - 2px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 $m;
+        section {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    &__logo {
+        text-transform: uppercase;
+        font-size: 2.4rem;
+        letter-spacing: 0.05em;
+        font-weight: 500;
+        // color: $primary;
+        margin-right: $m;
+    }
+
+    &__downloading-indicator {
+        padding: $xs $s;
+        display: flex;
+        align-items: center;
+        margin-right: $m;
+        font-weight: 500;
+        border: $bl;
+        svg {
+            margin-right: $xs;
+            color: $primary;
+        }
+    }
+}
+
+@include sm {
+    .navbar {
+        nav {
+            height: $l;
+            padding: 0;
+        }
+
+        &__logo {
+            font-size: 2rem;
+            margin: 0 $s;
+        }
+
+        &__downloading-indicator {
+            margin-right: 0;
+        }
+    }
+}

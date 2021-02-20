@@ -1,0 +1,117 @@
+.card.placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $text-alter;
+    height: 140px;
+    border: $bl;
+}
+
+.default-card,
+.tile-card {
+    overflow: hidden;
+    height: fit-content;
+    background-color: $bg;
+    position: relative;
+    img {
+        transition: 200ms ease-in-out;
+        width: 100%;
+        color: $bg;
+        z-index: -2;
+    }
+}
+
+.default-card {
+    border: $bl;
+    &:hover img {
+        transform: scale(1.2);
+    }
+    &__content {
+        position: relative;
+        background-color: $bg;
+        padding: $s $xs;
+        // padding-top: $m;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__id {
+        padding: 0 $xs;
+    }
+    &__controls {
+        display: flex;
+        .btn:not(:last-of-type) {
+            margin-right: $xs;
+        }
+    }
+    &__ext {
+        font-size: 1.2rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        padding: 0 $s;
+    }
+    &__index {
+        width: 30px;
+        height: 30px;
+        // border-radius: $brf;
+        // color: $text-alter;
+        background-color: $bg-elevated;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+    &__badge {
+        position: absolute;
+        top: $xs;
+        left: $xs;
+        display: flex;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 200ms ease-in-out;
+        // border-radius: 15px;
+        border-radius: $brs;
+        overflow: hidden;
+        background-color: rgba($bg, $alpha: 0.7);
+    }
+    &:hover &__badge {
+        opacity: 1;
+    }
+}
+
+// variables
+$tile-gap: 1px;
+
+@include sm {
+    .tile-card {
+        margin: $tile-gap;
+
+        &__content {
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        &__details,
+        &__index {
+            display: flex;
+            align-items: center;
+        }
+        &__id {
+            padding: $xs $s;
+        }
+        &__index {
+            width: $m + $s;
+            height: $m + $s;
+            font-size: 1.2rem;
+            background-color: $bg-elevated;
+            justify-content: center;
+            margin-right: $s;
+        }
+        &__ext {
+            text-transform: uppercase;
+            font-size: 1rem;
+        }
+    }
+}

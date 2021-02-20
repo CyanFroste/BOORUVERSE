@@ -1,0 +1,21 @@
+#modal {
+    .modal {
+        &__backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 40;
+            background-color: rgba($bg, $alpha: 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        &__content {
+            background-color: $bg;
+            // padding: $m;
+            border: $bl;
+        }
+    }
+}

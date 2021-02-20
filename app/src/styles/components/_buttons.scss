@@ -1,0 +1,49 @@
+button {
+    background-color: transparent;
+    color: inherit;
+    border: none;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    padding: $xs $s;
+    background-color: $bg;
+    transition: 200ms ease-in-out;
+}
+
+.btn.icon {
+    padding: $s;
+}
+
+.btn:hover {
+    background-color: $bg-elevated;
+}
+
+.btn.alter {
+    background-color: $bg-alter;
+    color: $text-alter;
+}
+.btn.alter:hover {
+    background-color: $text; //
+}
+
+.btn.icon-colored svg {
+    color: $primary;
+}
+
+.btn.text {
+    font-weight: 500;
+}
+
+.btn.icon-left svg {
+    margin-right: $xs;
+}
+
+.btn.icon-right svg {
+    margin-left: $xs;
+}
+
+.btn.outlined {
+    border: $bl;
+}

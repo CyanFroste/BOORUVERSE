@@ -1,0 +1,15 @@
+server side
+    Refactoring
+    'Preview' feature expansion and implementing manual cache 
+    ? save full post in bookmarks
+    ? replace download websocket system with a promise 
+    ? rethrow SQL operation errors
+    backup / restore bookmarks
+    start mongoDB when server starts using script
+
+client side
+    preview controls
+    handle empty result errors
+
+
+

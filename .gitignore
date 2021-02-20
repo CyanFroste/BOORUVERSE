@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+app/node_modules/
+
+# Transpiled js
+**/*.js
+
+# Build
+app/build/
+
+# Environment
+app/.eslintcache
+.env
+
+# Scripts
+*.bat

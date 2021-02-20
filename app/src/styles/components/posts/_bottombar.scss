@@ -1,0 +1,32 @@
+.bottombar {
+    background-color: $bg;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-bottom: $bl;
+    border-top: $bl;
+
+    nav {
+        height: $l;
+        display: flex;
+        align-items: stretch;
+        justify-content: space-between;
+    }
+    &__prev.btn,
+    &__next.btn {
+        padding: $s $m;
+    }
+    &__page-indicator {
+        color: $primary;
+        justify-content: center;
+    }
+    &__page-input {
+        display: flex;
+        input {
+            width: $l + $m;
+            min-width: $l + $m;
+        }
+    }
+}

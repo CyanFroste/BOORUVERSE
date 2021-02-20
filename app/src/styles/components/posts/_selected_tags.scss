@@ -1,0 +1,31 @@
+.filters__selected-tags {
+    width: 600px;
+    max-width: 600px;
+    min-height: 200px;
+    height: 200px;
+    padding: $m;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &__go {
+        align-self: flex-end;
+    }
+
+    .selected-tags__list {
+        display: flex;
+        flex-wrap: wrap;
+        margin: $xs 0;
+
+        .chip {
+            margin-right: $s;
+            margin-bottom: $s;
+        }
+        &.placeholder {
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: $text-alter;
+        }
+    }
+}

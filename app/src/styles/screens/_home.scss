@@ -1,0 +1,97 @@
+.home {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    padding: $m;
+    align-items: center;
+
+    section {
+        height: 100%;
+        min-width: 360px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &__ver,
+    &__name,
+    &__warn {
+        letter-spacing: 0.05em;
+        font-weight: 500;
+    }
+    &__name {
+        text-transform: uppercase;
+        font-size: 4rem;
+    }
+    &__ver {
+        font-size: 2rem;
+        margin-bottom: $s;
+        text-align: end;
+        border: $bl;
+        padding: $xs $s;
+        span {
+            color: $text-alter;
+        }
+    }
+    &__warn {
+        font-size: 2rem;
+        color: $text-alter;
+        span {
+            color: $primary;
+        }
+    }
+    &__author {
+        margin-top: $l;
+        text-align: end;
+        .author__name {
+            font-size: 2rem;
+        }
+        .copyright {
+            font-size: 1.2rem;
+            color: $text-alter;
+        }
+    }
+
+    &__booru-list {
+        display: flex;
+        flex-direction: column;
+        background-color: $bg;
+        align-self: flex-end;
+        margin-top: auto;
+        margin-bottom: $m;
+        max-height: 420px;
+        width: 100%;
+        overflow: auto;
+        .booru-list {
+            &__item {
+                transition: 200ms ease-in-out;
+                padding: $s $m;
+                border: $bl;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                text-transform: uppercase;
+                font-weight: 500;
+                svg {
+                    margin-left: $xs;
+                    color: $primary;
+                }
+            }
+            &__item:not(:last-of-type) {
+                margin-bottom: $m;
+            }
+            &__item:hover {
+                background-color: $bg-elevated;
+            }
+        }
+    }
+}
+
+@include sm {
+    .home {
+        padding: $s;
+        section {
+            min-width: 100%;
+        }
+    }
+}
