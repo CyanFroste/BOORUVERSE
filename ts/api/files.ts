@@ -20,14 +20,14 @@ export async function download(
     // send response when download is already queued
     if (DOWNLOADS.downloading.includes(fileName)) {
         console.log('\n---- File already in queue! ----')
-        return { message: 'file already in queue', type: 'warning' }
+        return { message: fileName + ' is already in queue', type: 'warning' }
     }
     try {
         const stats = fs.statSync(filePath) // check if file exists, if it exists, this won't throw error
         // gelbooru doesn't provide size, so it's always different size
         if (stats.size != size && booru !== 'gelbooru') throw VARIANT_SIZE_ERROR
         console.log('\n---- File already exists! ----')
-        return { message: 'file already exists', type: 'warning' } // send response to client
+        return { message: fileName + ' already exists', type: 'warning' } // send response to client
     } catch (err) {
         // if file doesn't exist or different file with same name exists, start download
         if (err === VARIANT_SIZE_ERROR)
@@ -85,6 +85,6 @@ export async function download(
             })
             throw err
         })
-        return { message: 'download queued', type: 'alert' }
+        return { message: fileName + ' has started downloading', type: 'alert' }
     }
 }

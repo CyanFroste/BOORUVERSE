@@ -426,8 +426,6 @@ input[type='checkbox']:checked ~ .switch__container .switch__slider {
 
 .default-card img,
 .tile-card img {
-  -webkit-transition: 200ms ease-in-out;
-  transition: 200ms ease-in-out;
   width: 100%;
   color: #141414;
   z-index: -2;
@@ -435,11 +433,6 @@ input[type='checkbox']:checked ~ .switch__container .switch__slider {
 
 .default-card {
   border: 1px solid #212121;
-}
-
-.default-card:hover img {
-  -webkit-transform: scale(1.2);
-          transform: scale(1.2);
 }
 
 .default-card__content {

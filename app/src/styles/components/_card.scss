@@ -14,7 +14,7 @@
     background-color: $bg;
     position: relative;
     img {
-        transition: 200ms ease-in-out;
+        // transition: 200ms ease-in-out;
         width: 100%;
         color: $bg;
         z-index: -2;
@@ -23,9 +23,9 @@
 
 .default-card {
     border: $bl;
-    &:hover img {
-        transform: scale(1.2);
-    }
+    // &:hover img {
+    //     transform: scale(1.2);
+    // }
     &__content {
         position: relative;
         background-color: $bg;
