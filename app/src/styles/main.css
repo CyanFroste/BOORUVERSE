@@ -630,6 +630,8 @@ input[type='checkbox']:checked ~ .switch__container .switch__slider {
           flex-direction: column;
   border-radius: 5px;
   border: 1px solid #d4d4d4;
+  padding: 10px;
+  padding-top: 0;
 }
 
 .toast svg {
@@ -661,7 +663,8 @@ input[type='checkbox']:checked ~ .switch__container .switch__slider {
 }
 
 .toast__type span {
-  font-weight: 500;
+  font-weight: 600;
+  color: #ff3e7b;
   text-transform: uppercase;
   letter-spacing: 0.075em;
   margin-left: 5px;
@@ -670,7 +673,7 @@ input[type='checkbox']:checked ~ .switch__container .switch__slider {
 .toast__body {
   max-width: 360px;
   padding: 10px;
-  min-height: 60px;
+  font-weight: 500;
 }
 
 @media (max-width: 900px) {

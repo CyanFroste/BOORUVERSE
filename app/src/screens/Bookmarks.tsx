@@ -81,7 +81,7 @@ const Bookmarks: React.FC<BookmarksProps> = () => {
                             <FiX />
                         </button>
                     </div>
-                ))}{' '}
+                ))}
         </div>
     )
 

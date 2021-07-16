@@ -10,6 +10,8 @@
     flex-direction: column;
     border-radius: $brs;
     border: $bl-alter;
+    padding: $s;
+    padding-top: 0;
 
     svg {
         color: $primary;
@@ -29,7 +31,8 @@
     }
 
     &__type span {
-        font-weight: 500;
+        font-weight: 600;
+        color: $primary;
         text-transform: uppercase;
         letter-spacing: 0.075em;
         margin-left: $xs;
@@ -38,7 +41,8 @@
     &__body {
         max-width: 360px;
         padding: $s;
-        min-height: $l + $m;
+        // min-height: $l + $m;
+        font-weight: 500;
     }
 }
 

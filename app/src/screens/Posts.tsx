@@ -73,7 +73,7 @@ export const Posts = () => {
                                 </div>
                             </section>
                             {/* right sidebar */}
-                            <RightSidebar {...previewData} {...{ page, filters }} />{' '}
+                            <RightSidebar {...previewData} {...{ page, filters }} />
                         </>
                     )}
 

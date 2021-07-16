@@ -3,13 +3,19 @@ server side
     'Preview' feature expansion and implementing manual cache 
     ? save full post in bookmarks
     ? replace download websocket system with a promise 
-    ? rethrow SQL operation errors
+    ? rethrow db operation errors
     backup / restore bookmarks
     start mongoDB when server starts using script
+    bookmarks
+        add fields: checked, following
+    delete file
+    '+' in URL is being parsed as space
 
 client side
+    define functions / smaller components outside components
+    decouple Toast from context
     preview controls
     handle empty result errors
-
-
-
+    bookmarks
+        option to copy id and tag easily, control checked, follow status
+    

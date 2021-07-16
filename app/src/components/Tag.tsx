@@ -55,7 +55,7 @@ const Tag: React.FC<TagProps> = ({ item, selectTag, selectedTags }) => {
             <Link to={`/${item.booru}/posts?filters=${item.name}`} className="filters-tag__body">
                 <div className="filters-tag__name">
                     {item.name.replaceAll('_', ' ')}
-                    <span className="filters-tag__count">{shortenCount(item.count)}</span>{' '}
+                    <span className="filters-tag__count">{shortenCount(item.count)}</span>
                 </div>
             </Link>
         </div>
