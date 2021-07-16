@@ -34,4 +34,5 @@ const Preview: React.FC<PreviewProps> = ({ url, ext, fallbackUrl }) => {
         </section>
     )
 }
+
 export default Preview

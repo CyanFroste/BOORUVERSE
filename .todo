@@ -12,7 +12,8 @@ server side
     '+' in URL is being parsed as space
 
 client side
-    define functions / smaller components outside components
+    define functions outside components if possible
+    reuse paginator functions
     decouple Toast from context
     preview controls
     handle empty result errors

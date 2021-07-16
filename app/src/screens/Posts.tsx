@@ -12,10 +12,9 @@ import Error from '../components/Error'
 import { useDisplaySize } from '../hooks/display'
 import { SM, XL } from '../globals'
 import Bottombar from '../components/posts/Bottombar'
+import MasonryGrid from '../components/posts/MasonryGrid'
 
-export type SetPreviewData = React.Dispatch<React.SetStateAction<PreviewData | undefined>>
-
-export const Posts = () => {
+const Posts = () => {
     // react router
     const { booru } = useParams<{ booru: string }>()
     // query params
@@ -31,22 +30,6 @@ export const Posts = () => {
 
     // states
     const [previewData, setPreviewData] = React.useState<PreviewData | undefined>()
-
-    // Component
-    const MasonryGrid = () => {
-        const cols: JSX.Element[][] = [[], []]
-        for (const [index, post] of posts.entries()) {
-            cols[index % 2].push(
-                <Card item={post} key={index} index={index + 1} size={displaySize} />
-            )
-        }
-        return (
-            <>
-                <div className="grid-masonry__column">{cols[0]}</div>
-                <div className="grid-masonry__column">{cols[1]}</div>
-            </>
-        )
-    }
 
     return (
         <Screen title={`booruverse | ${booru}`} size={displaySize}>
@@ -81,7 +64,7 @@ export const Posts = () => {
                         <>
                             {/* posts view */}
                             <section className="posts__view__grid-masonry">
-                                <MasonryGrid />
+                                <MasonryGrid items={posts} />
                             </section>
 
                             {/* bottom bar */}

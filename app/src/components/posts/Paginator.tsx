@@ -3,7 +3,7 @@ import { FiArrowRight, FiChevronLeft, FiChevronRight, FiX } from 'react-icons/fi
 import { useHistory, useLocation } from 'react-router-dom'
 import { NEXT_PAGE, PageDirection, PREV_PAGE } from '../../globals'
 
-interface PaginatorProps {
+export interface PaginatorProps {
     page: string | null
     filters: string | null
 }

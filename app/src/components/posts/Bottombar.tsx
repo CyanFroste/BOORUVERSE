@@ -5,12 +5,11 @@ import { CommonContext } from '../../contexts/CommonContext'
 import { DisplaySize, NEXT_PAGE, PageDirection, PREV_PAGE, SM } from '../../globals'
 import Modal from '../../layouts/Modal' // sm modal?
 import Switch from '../Switch'
-import Filters from '../posts/Filters'
+import Filters from './Filters'
+import { PaginatorProps } from './Paginator'
 
-interface BottombarProps {
+interface BottombarProps extends PaginatorProps {
     booru: string
-    page: string | null
-    filters: string | null
     size?: DisplaySize
 }
 

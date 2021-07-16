@@ -1,7 +1,8 @@
 import * as React from 'react'
-import { FiTrash, FiX } from 'react-icons/fi'
+import { FiTrash } from 'react-icons/fi'
 import { useQuery, useQueryClient } from 'react-query'
-import { Link } from 'react-router-dom'
+import BookmarkedPosts from '../components/bookmarks/BookmarkedPosts'
+import BookmarkedTags from '../components/bookmarks/BookmarkedTags'
 import Error from '../components/Error'
 import Loading from '../components/Loading'
 import { CommonContext } from '../contexts/CommonContext'
@@ -42,49 +43,6 @@ const Bookmarks: React.FC<BookmarksProps> = () => {
         queryClient.invalidateQueries('bookmarks')
     }
 
-    // Component
-    const BookmarkedPosts = () => (
-        <div className="bookmarks__list">
-            {bookmarks
-                .filter((bookmark: any) => bookmark.booruId)
-                .map((bookmark: any) => (
-                    <div key={bookmark._id} className="bookmarks__post">
-                        <Link to={`/${bookmark.booru}/post/${bookmark.booruId}`}>
-                            <span>{bookmark.booru}</span>
-                            {bookmark.booruId}
-                        </Link>
-                        <button
-                            type="button"
-                            className="btn"
-                            onClick={() => selectBookmark(bookmark)}>
-                            <FiX />
-                        </button>
-                    </div>
-                ))}
-        </div>
-    )
-    // Component
-    const BookmarkedTags = () => (
-        <div className="bookmarks__list">
-            {bookmarks
-                .filter((bookmark: any) => bookmark.name)
-                .map((bookmark: any) => (
-                    <div key={bookmark._id} className="bookmarks__tag">
-                        <Link to={`/${bookmark.booru}/posts?filters=${bookmark.name}`}>
-                            <span>{bookmark.booru}</span>
-                            {bookmark.name.replaceAll('_', ' ')}
-                        </Link>
-                        <button
-                            type="button"
-                            className="btn"
-                            onClick={() => selectBookmark(bookmark)}>
-                            <FiX />
-                        </button>
-                    </div>
-                ))}
-        </div>
-    )
-
     return (
         <Screen title="booruverse | bookmarks" size={displaySize}>
             {status === 'loading' && <Loading full={true} />}
@@ -113,7 +71,17 @@ const Bookmarks: React.FC<BookmarksProps> = () => {
 
                             {/* bookmarks */}
                             <section>
-                                {tab === POST_BOOKMARKS ? <BookmarkedPosts /> : <BookmarkedTags />}
+                                {tab === POST_BOOKMARKS ? (
+                                    <BookmarkedPosts
+                                        bookmarks={bookmarks}
+                                        selectBookmark={selectBookmark}
+                                    />
+                                ) : (
+                                    <BookmarkedTags
+                                        bookmarks={bookmarks}
+                                        selectBookmark={selectBookmark}
+                                    />
+                                )}
                             </section>
                         </>
                     )}
@@ -122,11 +90,17 @@ const Bookmarks: React.FC<BookmarksProps> = () => {
                         <>
                             <section>
                                 <div className="bookmarks__title">POSTS</div>
-                                <BookmarkedPosts />
+                                <BookmarkedPosts
+                                    bookmarks={bookmarks}
+                                    selectBookmark={selectBookmark}
+                                />
                             </section>
                             <section>
                                 <div className="bookmarks__title">TAGS</div>
-                                <BookmarkedTags />
+                                <BookmarkedTags
+                                    bookmarks={bookmarks}
+                                    selectBookmark={selectBookmark}
+                                />
                             </section>
                         </>
                     )}

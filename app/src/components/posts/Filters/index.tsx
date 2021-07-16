@@ -1,22 +1,15 @@
 import * as React from 'react'
-import {
-    FiChevronLeft,
-    FiChevronRight,
-    FiSearch,
-    FiX,
-    FiFilter,
-    FiArrowRight,
-    FiRotateCw
-} from 'react-icons/fi'
+import { FiChevronLeft, FiChevronRight, FiSearch, FiX, FiFilter, FiRotateCw } from 'react-icons/fi'
 import { useQuery } from 'react-query'
 import { useHistory } from 'react-router-dom'
-import Modal from '../../layouts/Modal'
-import { getTags } from '../../services/data'
-import Error from '../Error'
-import Loading from '../Loading'
-import Tag from '../Tag'
+import { getTags } from '../../../services/data'
+import Error from '../../Error'
+import Loading from '../../Loading'
+import Tag from '../../Tag'
 import { useDebounce } from 'use-debounce'
-import { DisplaySize, EXCLUDED, SelectionType, SM, XL } from '../../globals'
+import { DisplaySize, EXCLUDED, SelectionType, SM, XL } from '../../../globals'
+import SelectedTagsList from './SelectedTagsList'
+import SelectedTagsListModal from './SelectedTagsListModal'
 
 interface FiltersProps {
     booru: string
@@ -122,53 +115,25 @@ const Filters: React.FC<FiltersProps> = ({ booru, filters, size = SM }) => {
         setIsSelectedTagsListModalOpen(!isSelectedTagsListModalOpen)
     const closeSelectedTagsListModal = () => setIsSelectedTagsListModalOpen(false)
 
-    // Component
-    const SelectedTagsList = () => (
-        <section className="selected-tags__list">
-            {selectedTags.map((tag) => (
-                <div className="chip" key={tag}>
-                    <button
-                        className="chip__action"
-                        onClick={() => setSelectedTags(selectedTags.filter((t) => t !== tag))}>
-                        <FiX />
-                    </button>
-                    <div className="chip__body">{tag.replaceAll('_', ' ')}</div>
-                </div>
-            ))}
-            {limitId && (
-                <div className="chip">
-                    <div className="chip__body">Id less than {limitId}</div>
-                </div>
-            )}
-        </section>
-    )
-    // Component
-    const SelectedTagsListModal = () => (
-        <Modal isOpen={isSelectedTagsListModalOpen} close={closeSelectedTagsListModal}>
-            <div className="filters__selected-tags">
-                {selectedTags.length || limitId ? (
-                    <>
-                        {/* selected tags list */}
-                        <SelectedTagsList />
-
-                        <button
-                            type="button"
-                            className="btn icon-right icon-colored filters__selected-tags__go"
-                            onClick={filter}>
-                            FILTER <FiArrowRight />
-                        </button>
-                    </>
-                ) : (
-                    <section className="selected-tags__list placeholder">No filters</section>
-                )}
-            </div>
-        </Modal>
-    )
-
     return (
         <aside className="filters">
-            {size === SM && <SelectedTagsList />}
-            {size === XL && <SelectedTagsListModal />}
+            {size === SM && (
+                <SelectedTagsList
+                    selectedTags={selectedTags}
+                    setSelectedTags={setSelectedTags}
+                    limitId={limitId}
+                />
+            )}
+            {size === XL && (
+                <SelectedTagsListModal
+                    isOpen={isSelectedTagsListModalOpen}
+                    close={closeSelectedTagsListModal}
+                    selectedTags={selectedTags}
+                    limitId={limitId}
+                    setSelectedTags={setSelectedTags}
+                    filter={filter}
+                />
+            )}
 
             {/* search input */}
             <div className="filters__search-container">

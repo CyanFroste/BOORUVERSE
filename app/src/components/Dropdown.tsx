@@ -2,7 +2,6 @@ import * as React from 'react'
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi'
 
 interface DropdownProps {
-    options?: any[]
     defaultValue?: string
     coloredIcon?: boolean
     outlined?: boolean

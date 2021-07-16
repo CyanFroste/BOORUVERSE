@@ -4,7 +4,7 @@ import { createPortal } from 'react-dom'
 const Portal: React.FC = ({ children }) =>
     createPortal(children, document.getElementById('modal') as HTMLDivElement)
 
-interface ModalProps {
+export interface ModalProps {
     isOpen: boolean
     close: (event: React.MouseEvent<HTMLDivElement>) => void
 }

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { useDisplaySize } from '../hooks/display'
 import Screen from '../layouts/Screen'
 
-export const Home = () => {
+const Home = () => {
     // get display size
     const displaySize = useDisplaySize()
 
