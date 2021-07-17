@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { CommonContextProvider } from './contexts/CommonContext'
-import Toast from './components/Toast'
 import Posts from './screens/Posts'
 import Home from './screens/Home'
 import Post from './screens/Post'
@@ -26,7 +25,6 @@ export const App = () => {
                     </Route>
                 </Switch>
             </Router>
-            <Toast />
         </CommonContextProvider>
     )
 }

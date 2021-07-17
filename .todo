@@ -14,7 +14,6 @@ server side
 client side
     define functions outside components if possible
     reuse paginator functions
-    decouple Toast from context
     preview controls
     handle empty result errors
     bookmarks

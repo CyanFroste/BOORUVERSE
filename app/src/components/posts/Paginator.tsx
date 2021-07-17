@@ -8,7 +8,7 @@ export interface PaginatorProps {
     filters: string | null
 }
 
-const Paginator: React.FC<PaginatorProps> = ({ page, filters }) => {
+const Paginator = ({ page, filters }: PaginatorProps) => {
     // react router
     const history = useHistory()
     const location = useLocation()
@@ -42,8 +42,7 @@ const Paginator: React.FC<PaginatorProps> = ({ page, filters }) => {
                 <button
                     type="button"
                     className="btn text outlined icon-right icon-colored"
-                    onClick={() => changePage(NEXT_PAGE)}
-                >
+                    onClick={() => changePage(NEXT_PAGE)}>
                     NEXT <FiChevronRight />
                 </button>
 
@@ -52,8 +51,7 @@ const Paginator: React.FC<PaginatorProps> = ({ page, filters }) => {
                     <button
                         type="button"
                         className="paginator__page-indicator btn text"
-                        onClick={() => setShowPageInput(!showPageInput)}
-                    >
+                        onClick={() => setShowPageInput(!showPageInput)}>
                         {page || 1}
                     </button>
                 ) : (
@@ -61,8 +59,7 @@ const Paginator: React.FC<PaginatorProps> = ({ page, filters }) => {
                         <button
                             className="btn"
                             type="button"
-                            onClick={() => setShowPageInput(!showPageInput)}
-                        >
+                            onClick={() => setShowPageInput(!showPageInput)}>
                             <FiX />
                         </button>
                         <input
@@ -82,8 +79,7 @@ const Paginator: React.FC<PaginatorProps> = ({ page, filters }) => {
                 <button
                     type="button"
                     className="btn text outlined icon-left icon-colored"
-                    onClick={() => changePage(PREV_PAGE)}
-                >
+                    onClick={() => changePage(PREV_PAGE)}>
                     <FiChevronLeft /> PREV
                 </button>
             </nav>

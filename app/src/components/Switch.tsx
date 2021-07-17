@@ -6,7 +6,7 @@ interface SwitchProps {
     name?: string
 }
 
-const Switch: React.FC<SwitchProps> = ({ toggle, on, name }) => {
+const Switch = ({ toggle, on, name }: SwitchProps) => {
     return (
         <div className={`switch ${on ? 'on' : 'off'}`}>
             {name && <div className="switch__name">{name}</div>}

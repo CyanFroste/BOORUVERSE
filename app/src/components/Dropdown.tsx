@@ -2,17 +2,13 @@ import * as React from 'react'
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi'
 
 interface DropdownProps {
+    children: React.ReactNode
     defaultValue?: string
     coloredIcon?: boolean
     outlined?: boolean
 }
 
-const Dropdown: React.FC<DropdownProps> = ({
-    children,
-    defaultValue = 'Select',
-    coloredIcon,
-    outlined
-}) => {
+const Dropdown = ({ children, defaultValue = 'Select', coloredIcon, outlined }: DropdownProps) => {
     // states
     const [isDropped, setIsDropped] = React.useState(false)
 

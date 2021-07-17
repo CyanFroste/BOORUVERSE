@@ -20,7 +20,7 @@ interface RightSidebarProps extends PreviewData {
 
 // TODO: Refactor CSS
 
-const RightSidebar: React.FC<RightSidebarProps> = ({ url, ext, id, booru, page, filters }) => {
+const RightSidebar = ({ url, ext, id, booru, page, filters }: RightSidebarProps) => {
     // * React Query: get base64 from provided url and extension to bypass CORS
     // ? Refactor if to support more extensions?
     const { data, status } = useQuery(['preview_quick', url, ext], () => getPreview(url, ext))

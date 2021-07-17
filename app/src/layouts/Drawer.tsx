@@ -1,15 +1,16 @@
 import * as React from 'react'
 import { createPortal } from 'react-dom'
 
-const Portal: React.FC = ({ children }) =>
+const Portal = ({ children }: { children: React.ReactNode }) =>
     createPortal(children, document.getElementById('drawer') as HTMLDivElement)
 
 interface DrawerProps {
+    children: React.ReactNode
     isOpen: boolean
     close: (event: React.MouseEvent<HTMLDivElement>) => void
 }
 
-const Drawer: React.FC<DrawerProps> = ({ children, isOpen, close }) => {
+const Drawer = ({ children, isOpen, close }: DrawerProps) => {
     React.useEffect(() => {
         isOpen && (document.body.style.overflow = 'hidden')
         return () => {

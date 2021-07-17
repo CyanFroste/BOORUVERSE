@@ -11,7 +11,7 @@ interface PreviewProps {
     fallbackUrl: string
 }
 
-const Preview: React.FC<PreviewProps> = ({ url, ext, fallbackUrl }) => {
+const Preview = ({ url, ext, fallbackUrl }: PreviewProps) => {
     // * React Query: get base64 from provided url and extension to bypass CORS
     // ? Refactor if to support more extensions?
     const { data, status } = useQuery(['preview', url, ext], () => getPreview(url, ext))

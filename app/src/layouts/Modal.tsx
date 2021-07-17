@@ -1,15 +1,16 @@
 import * as React from 'react'
 import { createPortal } from 'react-dom'
 
-const Portal: React.FC = ({ children }) =>
+const Portal = ({ children }: { children: React.ReactNode }) =>
     createPortal(children, document.getElementById('modal') as HTMLDivElement)
 
 export interface ModalProps {
+    children: React.ReactNode
     isOpen: boolean
     close: (event: React.MouseEvent<HTMLDivElement>) => void
 }
 
-const Modal: React.FC<ModalProps> = ({ children, isOpen, close }) => {
+const Modal = ({ children, isOpen, close }: ModalProps) => {
     React.useEffect(() => {
         isOpen && (document.body.style.overflow = 'hidden')
         return () => {

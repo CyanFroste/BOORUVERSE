@@ -8,7 +8,7 @@ interface LeftSidebarProps {
     size?: DisplaySize
 }
 
-const LeftSidebar: React.FC<LeftSidebarProps> = ({ booru, filters, size = XL }) => {
+const LeftSidebar = ({ booru, filters, size = XL }: LeftSidebarProps) => {
     return (
         <section className="posts__sidebar-left">
             <Filters {...{ booru, filters, size }} />

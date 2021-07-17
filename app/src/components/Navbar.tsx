@@ -12,7 +12,7 @@ interface NavbarProps {
     size?: DisplaySize
 }
 
-const Navbar: React.FC<NavbarProps> = ({ size = SM }) => {
+const Navbar = ({ size = SM }: NavbarProps) => {
     // react router
     const { booru } = useParams<{ booru: string }>()
 

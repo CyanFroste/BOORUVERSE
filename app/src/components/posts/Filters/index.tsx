@@ -1,5 +1,13 @@
 import * as React from 'react'
-import { FiChevronLeft, FiChevronRight, FiSearch, FiX, FiFilter, FiRotateCw } from 'react-icons/fi'
+import {
+    FiChevronLeft,
+    FiChevronRight,
+    FiSearch,
+    FiX,
+    FiFilter,
+    FiRotateCw,
+    FiArrowRight
+} from 'react-icons/fi'
 import { useQuery } from 'react-query'
 import { useHistory } from 'react-router-dom'
 import { getTags } from '../../../services/data'
@@ -9,7 +17,7 @@ import Tag from '../../Tag'
 import { useDebounce } from 'use-debounce'
 import { DisplaySize, EXCLUDED, SelectionType, SM, XL } from '../../../globals'
 import SelectedTagsList from './SelectedTagsList'
-import SelectedTagsListModal from './SelectedTagsListModal'
+import Modal from '../../../layouts/Modal'
 
 interface FiltersProps {
     booru: string
@@ -17,7 +25,7 @@ interface FiltersProps {
     size?: DisplaySize
 }
 
-const Filters: React.FC<FiltersProps> = ({ booru, filters, size = SM }) => {
+const Filters = ({ booru, filters, size = SM }: FiltersProps) => {
     // react router
     const history = useHistory()
 
@@ -125,14 +133,29 @@ const Filters: React.FC<FiltersProps> = ({ booru, filters, size = SM }) => {
                 />
             )}
             {size === XL && (
-                <SelectedTagsListModal
-                    isOpen={isSelectedTagsListModalOpen}
-                    close={closeSelectedTagsListModal}
-                    selectedTags={selectedTags}
-                    limitId={limitId}
-                    setSelectedTags={setSelectedTags}
-                    filter={filter}
-                />
+                <Modal isOpen={isSelectedTagsListModalOpen} close={closeSelectedTagsListModal}>
+                    <div className="filters__selected-tags">
+                        {selectedTags.length || limitId ? (
+                            <>
+                                <SelectedTagsList
+                                    selectedTags={selectedTags}
+                                    setSelectedTags={setSelectedTags}
+                                    limitId={limitId}
+                                />
+                                <button
+                                    type="button"
+                                    className="btn icon-right icon-colored filters__selected-tags__go"
+                                    onClick={filter}>
+                                    FILTER <FiArrowRight />
+                                </button>
+                            </>
+                        ) : (
+                            <section className="selected-tags__list placeholder">
+                                No filters
+                            </section>
+                        )}
+                    </div>
+                </Modal>
             )}
 
             {/* search input */}

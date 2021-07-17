@@ -4,7 +4,7 @@ interface LoadingProps {
     full?: boolean
 }
 
-const Loading: React.FC<LoadingProps> = ({ full }) => {
+const Loading = ({ full }: LoadingProps) => {
     return (
         <div className={`loading ${full ? 'full' : 'fit'}`}>
             <div className="spinner">

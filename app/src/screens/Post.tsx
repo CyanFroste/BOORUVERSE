@@ -2,7 +2,6 @@ import { useParams } from 'react-router-dom'
 import { useQuery } from 'react-query'
 import { download } from '../services/files'
 import { getPost } from '../services/data'
-import { CommonContext } from '../contexts/CommonContext'
 import * as React from 'react'
 import { FiHeart } from 'react-icons/fi'
 import Screen from '../layouts/Screen'
@@ -20,17 +19,15 @@ const Post = () => {
     // react router
     const { booru, id } = useParams<{ booru: string; id: string }>()
 
-    // contexts
-    const { setToast } = React.useContext(CommonContext)
-
-    // states
-    const [selectedBookmark, setSelectedBookmark] = React.useState<any | null>(null)
-
     // react query: get a single post's data
     const { data: post, status } = useQuery(['post', booru, id], () => getPost(booru, id))
 
     // get display size
     const displaySize = useDisplaySize()
+
+    // states
+    const [selectedBookmark, setSelectedBookmark] = React.useState<any | null>(null)
+    const [toast, setToast] = React.useState<any>(null)
 
     // * Bookmark controls
     const selectBookmark = (bookmark: any) => setSelectedBookmark(bookmark)
@@ -52,7 +49,11 @@ const Post = () => {
             .catch((err) => setToast(err))
 
     return (
-        <Screen title={`booruverse | ${booru} | ${id}`} size={displaySize}>
+        <Screen
+            title={`booruverse | ${booru} | ${id}`}
+            size={displaySize}
+            toast={toast}
+            setToast={setToast}>
             {status === 'loading' && <Loading full={true} />}
             {status === 'error' && <Error full={true} />}
             {status === 'success' && post && (

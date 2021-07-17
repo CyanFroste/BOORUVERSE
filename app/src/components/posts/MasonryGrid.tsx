@@ -5,12 +5,15 @@ import Card from './Card'
 interface MasonryGridProps {
     items: any
     size?: DisplaySize
+    setToast: React.Dispatch<any>
 }
 
-const MasonryGrid = ({ items, size = SM }: MasonryGridProps) => {
+const MasonryGrid = ({ items, size = SM, setToast }: MasonryGridProps) => {
     const cols: JSX.Element[][] = [[], []]
     for (const [index, item] of items.entries()) {
-        cols[index % 2].push(<Card item={item} key={item.id} index={index + 1} size={size} />)
+        cols[index % 2].push(
+            <Card item={item} key={item.id} index={index + 1} size={size} setToast={setToast} />
+        )
     }
     return (
         <>

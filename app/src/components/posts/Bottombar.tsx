@@ -13,7 +13,7 @@ interface BottombarProps extends PaginatorProps {
     size?: DisplaySize
 }
 
-const Bottombar: React.FC<BottombarProps> = ({ booru, page, filters, size = SM }) => {
+const Bottombar = ({ booru, page, filters, size = SM }: BottombarProps) => {
     // react router
     const history = useHistory()
     const location = useLocation()

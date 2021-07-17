@@ -7,7 +7,7 @@ interface ErrorProps {
     message?: string
 }
 
-const Error: React.FC<ErrorProps> = ({ full, message }) => {
+const Error = ({ full, message }: ErrorProps) => {
     return (
         <div className={`error ${full ? 'full' : 'fit'}`}>
             <FiAlertCircle />

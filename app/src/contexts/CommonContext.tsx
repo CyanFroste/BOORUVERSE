@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { io } from 'socket.io-client'
-import { TOAST_DURATION } from '../components/Toast'
 
 interface ContextValue {
     scrollPos: number
@@ -12,19 +11,16 @@ interface ContextValue {
         downloaded: string[]
     }
     socketStatus: boolean
-    toast: any
-    setToast: React.Dispatch<any>
 }
 
 const socket = io('/') // ? network ip needed? root location name? But, '/'  seems to work on development
 export const CommonContext = React.createContext({} as ContextValue)
 
-export const CommonContextProvider: React.FC = ({ children }) => {
+export const CommonContextProvider = ({ children }: { children: React.ReactNode }) => {
     // states
     const [scrollPos, setScrollPos] = React.useState(0)
     const [qdm, setQdm] = React.useState(false)
     const [socketStatus, setSocketStatus] = React.useState(false)
-    const [toast, setToast] = React.useState<any>(null)
     const [downloads, setDownloads] = React.useState({
         downloading: [],
         downloaded: []
@@ -37,14 +33,6 @@ export const CommonContextProvider: React.FC = ({ children }) => {
         socket.on('disconnect', () => setSocketStatus(false))
     }, [])
 
-    // * Toast
-    React.useEffect(() => {
-        const timer = setTimeout(() => {
-            if (toast) setToast(null)
-        }, TOAST_DURATION)
-        return () => clearTimeout(timer)
-    }, [toast])
-
     return (
         <CommonContext.Provider
             value={{
@@ -53,9 +41,7 @@ export const CommonContextProvider: React.FC = ({ children }) => {
                 qdm,
                 setQdm,
                 downloads,
-                socketStatus,
-                toast,
-                setToast
+                socketStatus
             }}>
             {children}
         </CommonContext.Provider>

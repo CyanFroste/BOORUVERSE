@@ -19,7 +19,7 @@ const shortenCount = (count: number) => {
     } else return count
 }
 
-const Tag: React.FC<TagProps> = ({ item, selectTag, selectedTags }) => {
+const Tag = ({ item, selectTag, selectedTags }: TagProps) => {
     const isTagSelected = () =>
         selectedTags && (selectedTags.includes(item.name) || selectedTags.includes('-' + item.name))
 

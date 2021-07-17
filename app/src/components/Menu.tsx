@@ -8,7 +8,7 @@ interface MenuProps {
     close: () => void
 }
 
-const Menu: React.FC<MenuProps> = ({ close }) => {
+const Menu = ({ close }: MenuProps) => {
     // contexts
     const { downloads } = React.useContext(CommonContext)
 

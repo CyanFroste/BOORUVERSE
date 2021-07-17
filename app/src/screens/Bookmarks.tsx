@@ -5,7 +5,6 @@ import BookmarkedPosts from '../components/bookmarks/BookmarkedPosts'
 import BookmarkedTags from '../components/bookmarks/BookmarkedTags'
 import Error from '../components/Error'
 import Loading from '../components/Loading'
-import { CommonContext } from '../contexts/CommonContext'
 import { BookmarkType, POST_BOOKMARKS, SM, TAG_BOOKMARKS, XL } from '../globals'
 import { useDisplaySize } from '../hooks/display'
 import Modal from '../layouts/Modal'
@@ -13,12 +12,7 @@ import Screen from '../layouts/Screen'
 import { removeBookmark } from '../services/bookmarks'
 import { getBookmarks } from '../services/data'
 
-interface BookmarksProps {}
-
-const Bookmarks: React.FC<BookmarksProps> = () => {
-    // contexts
-    const { setToast } = React.useContext(CommonContext)
-
+const Bookmarks = () => {
     // * Query Client to modify cache
     const queryClient = useQueryClient()
     // react query: get list of bookmarks
@@ -27,6 +21,7 @@ const Bookmarks: React.FC<BookmarksProps> = () => {
     // states
     const [tab, setTab] = React.useState<BookmarkType>(POST_BOOKMARKS)
     const [selectedBookmark, setSelectedBookmark] = React.useState<any | null>(null)
+    const [toast, setToast] = React.useState<any>(null)
 
     // get display size
     const displaySize = useDisplaySize()
@@ -44,7 +39,7 @@ const Bookmarks: React.FC<BookmarksProps> = () => {
     }
 
     return (
-        <Screen title="booruverse | bookmarks" size={displaySize}>
+        <Screen title="booruverse | bookmarks" size={displaySize} toast={toast} setToast={setToast}>
             {status === 'loading' && <Loading full={true} />}
             {status === 'error' && <Error full={true} />}
             {status === 'success' && bookmarks && (

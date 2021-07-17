@@ -11,11 +11,12 @@ interface CardProps {
     index: number
     setPreviewData?: React.Dispatch<React.SetStateAction<PreviewData | undefined>>
     size?: DisplaySize
+    setToast: React.Dispatch<any>
 }
 
-const Card: React.FC<CardProps> = ({ item, index, setPreviewData, size = SM }) => {
+const Card = ({ item, index, setPreviewData, size = SM, setToast }: CardProps) => {
     // contexts
-    const { qdm, setToast } = React.useContext(CommonContext)
+    const { qdm } = React.useContext(CommonContext)
 
     // states
     const [minThumbnailHeight, setMinThumbnailHeight] = React.useState(
@@ -38,9 +39,7 @@ const Card: React.FC<CardProps> = ({ item, index, setPreviewData, size = SM }) =
         if (qdm) {
             e.preventDefault()
             download(item, ORIGINAL)
-                .then((data) => {
-                    setToast(data)
-                })
+                .then((data) => setToast(data))
                 .catch((err) => setToast(err))
         }
     }

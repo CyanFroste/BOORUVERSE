@@ -30,9 +30,14 @@ const Posts = () => {
 
     // states
     const [previewData, setPreviewData] = React.useState<PreviewData | undefined>()
+    const [toast, setToast] = React.useState<any>(null)
 
     return (
-        <Screen title={`booruverse | ${booru}`} size={displaySize}>
+        <Screen
+            title={`booruverse | ${booru}`}
+            size={displaySize}
+            toast={toast}
+            setToast={setToast}>
             {status === 'loading' && <Loading full={true} />}
             {status === 'error' && <Error full={true} />}
             {status === 'success' && posts && (
@@ -40,23 +45,26 @@ const Posts = () => {
                     {displaySize === XL && (
                         <>
                             {/* left sidebar */}
-                            <LeftSidebar {...{ booru, filters, size: displaySize }} />
+                            <LeftSidebar booru={booru} filters={filters} size={displaySize} />
+
                             {/* posts view */}
                             <section className="posts__view-default">
                                 <div className="posts__view__grid-default">
                                     {(posts as any[]).map((item, i) => (
                                         <Card
-                                            key={i}
+                                            key={item.id}
                                             item={item}
                                             index={i + 1}
                                             setPreviewData={setPreviewData}
                                             size={displaySize}
+                                            setToast={setToast}
                                         />
                                     ))}
                                 </div>
                             </section>
+
                             {/* right sidebar */}
-                            <RightSidebar {...previewData} {...{ page, filters }} />
+                            <RightSidebar {...previewData} page={page} filters={filters} />
                         </>
                     )}
 
@@ -64,7 +72,7 @@ const Posts = () => {
                         <>
                             {/* posts view */}
                             <section className="posts__view__grid-masonry">
-                                <MasonryGrid items={posts} />
+                                <MasonryGrid items={posts} setToast={setToast} />
                             </section>
 
                             {/* bottom bar */}
