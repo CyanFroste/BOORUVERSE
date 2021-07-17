@@ -2,14 +2,14 @@ import * as React from 'react'
 import { CommonContext } from '../../../contexts/CommonContext'
 import { DisplaySize, ORIGINAL, SM, XL } from '../../../globals'
 import { download } from '../../../services/files'
-import { PreviewData } from '../RightSidebar'
+import { PreviewProps } from '../Preview'
 import DefaultCard from './DefaultCard'
 import TileCard from './TileCard'
 
 interface CardProps {
     item: any
     index: number
-    setPreviewData?: React.Dispatch<React.SetStateAction<PreviewData | undefined>>
+    setPreviewData?: React.Dispatch<React.SetStateAction<PreviewProps | null>>
     size?: DisplaySize
     setToast: React.Dispatch<any>
 }

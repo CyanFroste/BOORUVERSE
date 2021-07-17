@@ -38,12 +38,13 @@ $preview-h: 650px;
         }
         .current-preview-details {
             display: flex;
+            align-items: center;
             justify-content: flex-end;
             font-size: 1.4rem;
             font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 0.075em;
-            span:not(:last-of-type) {
+            span {
                 margin-right: $xs;
             }
             span:nth-child(2) {

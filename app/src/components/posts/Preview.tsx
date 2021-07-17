@@ -5,20 +5,21 @@ import { getPreview } from '../../services/media'
 import Error from '../Error'
 import Loading from '../Loading'
 
-interface PreviewProps {
+export interface PreviewProps {
     url: string
     ext: string
-    fallbackUrl: string
+    id: number | string
+    booru: string
 }
 
-const Preview = ({ url, ext, fallbackUrl }: PreviewProps) => {
+const Preview = ({ url, ext, booru, id }: PreviewProps) => {
     // * React Query: get base64 from provided url and extension to bypass CORS
     // ? Refactor if to support more extensions?
-    const { data, status } = useQuery(['preview', url, ext], () => getPreview(url, ext))
+    const { data, status } = useQuery(['preview_quick', url, ext], () => getPreview(url, ext))
 
     return (
-        <section className="post__preview">
-            {status === 'loading' && <Loading />}
+        <section className="sidebar-right__preview">
+            {status === 'loading' && <Loading message={`[ ${booru} ${id}.${ext} ]`} />}
             {status === 'error' && <Error message="Something went wrong!" />}
             {status === 'success' &&
                 // * If no url or ext is provided data will be false
@@ -29,7 +30,7 @@ const Preview = ({ url, ext, fallbackUrl }: PreviewProps) => {
                         </TransformComponent>
                     </TransformWrapper>
                 ) : (
-                    <img src={fallbackUrl} alt="Fallback" />
+                    <Error message={`${ext} not supported`} />
                 ))}
         </section>
     )

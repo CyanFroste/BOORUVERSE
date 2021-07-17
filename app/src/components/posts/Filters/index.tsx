@@ -227,7 +227,7 @@ const Filters = ({ booru, filters, size = SM }: FiltersProps) => {
             {/* tags list */}
             <section className="filters__tags-list">
                 {status === 'loading' && <Loading />}
-                {status === 'error' && <Error />}
+                {status === 'error' && <Error message="Something went wrong!" />}
                 {status === 'success' &&
                     tags &&
                     (tags as any[]).map((tag) => (

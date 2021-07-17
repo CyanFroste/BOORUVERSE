@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import { useQueryParams } from '../hooks/query'
 import { useQuery } from 'react-query'
 import { getPosts } from '../services/data'
-import RightSidebar, { PreviewData } from '../components/posts/RightSidebar'
+import RightSidebar from '../components/posts/RightSidebar'
 import Card from '../components/posts/Card'
 import LeftSidebar from '../components/posts/LeftSidebar'
 import Loading from '../components/Loading'
@@ -13,6 +13,7 @@ import { useDisplaySize } from '../hooks/display'
 import { SM, XL } from '../globals'
 import Bottombar from '../components/posts/Bottombar'
 import MasonryGrid from '../components/posts/MasonryGrid'
+import { PreviewProps } from '../components/posts/Preview'
 
 const Posts = () => {
     // react router
@@ -29,7 +30,7 @@ const Posts = () => {
     const displaySize = useDisplaySize()
 
     // states
-    const [previewData, setPreviewData] = React.useState<PreviewData | undefined>()
+    const [previewData, setPreviewData] = React.useState<PreviewProps | null>(null)
     const [toast, setToast] = React.useState<any>(null)
 
     return (
@@ -39,7 +40,7 @@ const Posts = () => {
             toast={toast}
             setToast={setToast}>
             {status === 'loading' && <Loading full={true} />}
-            {status === 'error' && <Error full={true} />}
+            {status === 'error' && <Error full={true} message="Something went wrong!" />}
             {status === 'success' && posts && (
                 <main className="posts">
                     {displaySize === XL && (
@@ -50,11 +51,11 @@ const Posts = () => {
                             {/* posts view */}
                             <section className="posts__view-default">
                                 <div className="posts__view__grid-default">
-                                    {(posts as any[]).map((item, i) => (
+                                    {(posts as any[]).map((item, index) => (
                                         <Card
-                                            key={item.id}
+                                            key={index}
                                             item={item}
-                                            index={i + 1}
+                                            index={index + 1}
                                             setPreviewData={setPreviewData}
                                             size={displaySize}
                                             setToast={setToast}
@@ -64,7 +65,12 @@ const Posts = () => {
                             </section>
 
                             {/* right sidebar */}
-                            <RightSidebar {...previewData} page={page} filters={filters} />
+                            <RightSidebar
+                                previewData={previewData}
+                                setPreviewData={setPreviewData}
+                                page={page}
+                                filters={filters}
+                            />
                         </>
                     )}
 
@@ -76,7 +82,12 @@ const Posts = () => {
                             </section>
 
                             {/* bottom bar */}
-                            <Bottombar {...{ booru, page, filters, size: displaySize }} />
+                            <Bottombar
+                                booru={booru}
+                                page={page}
+                                filters={filters}
+                                size={displaySize}
+                            />
                         </>
                     )}
                 </main>

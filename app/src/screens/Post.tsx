@@ -55,7 +55,7 @@ const Post = () => {
             toast={toast}
             setToast={setToast}>
             {status === 'loading' && <Loading full={true} />}
-            {status === 'error' && <Error full={true} />}
+            {status === 'error' && <Error full={true} message="Something went wrong!" />}
             {status === 'success' && post && (
                 <main className="post">
                     {/* SM : preview -> content -> tags

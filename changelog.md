@@ -7,3 +7,5 @@
 - Better messages on file download
 # 4.0.3
 - Decoupled Toast from Context
+# 4.0.4
+- Added ability to close preview on the right sidebar

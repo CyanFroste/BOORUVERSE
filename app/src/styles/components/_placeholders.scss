@@ -22,7 +22,7 @@
     font-weight: 500;
     letter-spacing: 0.075em;
     span:nth-child(1) {
-        color: $primary;
+        animation: pulse 1s ease-in-out infinite alternate;
     }
     span:nth-child(2) {
         color: $text-alter;
@@ -35,10 +35,22 @@
 .error svg {
     height: $l;
     width: $l;
-    color: $primary;
+    animation: pulse 1s ease-in-out infinite alternate;
 }
+
 .error.full .btn,
-.error .message {
+.error .message,
+.loading .message {
     margin-top: $m;
     color: $text-alter;
+}
+
+// animations
+@keyframes pulse {
+    0% {
+        color: $primary;
+    }
+    100% {
+        color: $text-alter;
+    }
 }

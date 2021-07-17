@@ -14,7 +14,7 @@ server side
 client side
     define functions outside components if possible
     reuse paginator functions
-    preview controls
+    preview controls (history?)
     handle empty result errors
     bookmarks
         option to copy id and tag easily, control checked, follow status

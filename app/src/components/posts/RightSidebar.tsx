@@ -1,75 +1,51 @@
 import * as React from 'react'
-import { FiMaximize } from 'react-icons/fi'
-import { useQuery } from 'react-query'
+import { FiMaximize, FiX } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
-import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch'
-import { getPreview } from '../../services/media'
 import Paginator from './Paginator'
+import Preview, { PreviewProps } from './Preview'
 
-export interface PreviewData {
-    url?: string
-    ext?: string
-    id?: number | string
-    booru?: string
-}
-
-interface RightSidebarProps extends PreviewData {
+interface RightSidebarProps {
+    previewData: PreviewProps | null
     page: string | null
     filters: string | null
+    setPreviewData: React.Dispatch<React.SetStateAction<PreviewProps | null>>
 }
 
-// TODO: Refactor CSS
-
-const RightSidebar = ({ url, ext, id, booru, page, filters }: RightSidebarProps) => {
-    // * React Query: get base64 from provided url and extension to bypass CORS
-    // ? Refactor if to support more extensions?
-    const { data, status } = useQuery(['preview_quick', url, ext], () => getPreview(url, ext))
-
+const RightSidebar = ({ previewData, setPreviewData, page, filters }: RightSidebarProps) => {
     return (
         <section className="posts__sidebar-right">
             {/* quick preview */}
-            {status === 'loading' && (
+
+            {previewData ? (
+                <Preview {...previewData} />
+            ) : (
                 <div className="sidebar-right__preview placeholder">
-                    {booru} {id}
+                    Click on <FiMaximize /> to Preview
                 </div>
             )}
-            {status === 'success' &&
-                // * If no url or ext is provided data will be false
-                (data ? (
-                    <div className="sidebar-right__preview">
-                        <TransformWrapper>
-                            <TransformComponent>
-                                <img src={data.src} alt="Original" />
-                            </TransformComponent>
-                        </TransformWrapper>
-                    </div>
-                ) : (
-                    <div className="sidebar-right__preview placeholder">
-                        {!(url && ext) ? (
-                            <>
-                                Click on <FiMaximize /> to Preview
-                            </>
-                        ) : (
-                            // * If url and ext is provided but unsupported data / error is present
-                            `${ext} preview not supported`
-                        )}
-                    </div>
-                ))}
 
             <div className="sidebar-right__content">
                 {/* paginator */}
-                <Paginator {...{ page, filters }} />
+                <Paginator page={page} filters={filters} />
 
                 {/* current preview details */}
-                <section>
-                    <div className="current-preview-details">
-                        <Link to={`/${booru}/post/${id}`}>
-                            <span>{booru}</span>
-                            <span>{id}</span>
-                            <span>{ext}</span>
-                        </Link>
-                    </div>
-                </section>
+                {previewData && (
+                    <section>
+                        <div className="current-preview-details">
+                            <Link to={`/${previewData.booru}/post/${previewData.id}`}>
+                                <span>{previewData.booru}</span>
+                                <span>{previewData.id}</span>
+                                <span>{previewData.ext}</span>
+                            </Link>
+                            <button
+                                className="btn icon"
+                                type="button"
+                                onClick={() => setPreviewData(null)}>
+                                <FiX />
+                            </button>
+                        </div>
+                    </section>
+                )}
             </div>
         </section>
     )

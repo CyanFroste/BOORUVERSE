@@ -3,6 +3,7 @@
     height: calc(100vh - 60px);
     display: grid;
     grid-template-columns: 300px minmax(600px, auto) 500px;
+    overflow-x: auto;
     gap: $m;
 
     &__preview,

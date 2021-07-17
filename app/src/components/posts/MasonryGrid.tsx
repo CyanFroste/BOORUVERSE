@@ -12,7 +12,7 @@ const MasonryGrid = ({ items, size = SM, setToast }: MasonryGridProps) => {
     const cols: JSX.Element[][] = [[], []]
     for (const [index, item] of items.entries()) {
         cols[index % 2].push(
-            <Card item={item} key={item.id} index={index + 1} size={size} setToast={setToast} />
+            <Card item={item} key={index} index={index + 1} size={size} setToast={setToast} />
         )
     }
     return (

@@ -41,7 +41,7 @@ const Bookmarks = () => {
     return (
         <Screen title="booruverse | bookmarks" size={displaySize} toast={toast} setToast={setToast}>
             {status === 'loading' && <Loading full={true} />}
-            {status === 'error' && <Error full={true} />}
+            {status === 'error' && <Error full={true} message="Something went wrong!" />}
             {status === 'success' && bookmarks && (
                 <main className="bookmarks">
                     {displaySize === SM && (
